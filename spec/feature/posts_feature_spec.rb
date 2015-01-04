@@ -8,4 +8,17 @@ feature 'posts' do
       expect(page).to have_link 'Add a post'
     end
   end
+
+  context 'posts have been added' do
+    before do
+      Posts.create(title: 'Smiley dog')
+    end
+
+    scenario 'display posts' do
+      visit '/posts'
+      expect(page).to have_content 'Smiley dog'
+      expect(page).not_to have_content 'No posts yet'
+    end
+  end
+
 end
