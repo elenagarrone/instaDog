@@ -34,4 +34,16 @@ feature 'posts' do
     end
   end
 
+  context 'viewing the posts' do
+    let!(:smiley_dog) { Post.create(title: 'Smiley dog') }
+
+    scenario 'lets a user view the post' do
+      visit '/posts'
+      click_link 'Smiley dog'
+      expect(page).to have_content 'Smiley dog'
+      expect(current_path).to eq "/posts/#{ smiley_dog.id }"
+    end
+
+  end
+
 end
