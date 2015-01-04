@@ -59,13 +59,23 @@ feature 'posts' do
   end
 
   context 'deleting posts' do
-    before { Post.create title: 'Smiley dog' }
+    before { @smiley_dog = Post.create title: 'Smiley dog' }
 
     scenario 'removes a posts when a user clicks a delete link' do
       visit '/posts'
       click_link 'Delete Smiley dog'
       expect(page).not_to have_content 'Smiley dog'
       expect(page).to have_content 'Post removed successfully'
+    end
+
+    scenario 'removes the comments and rating when a user delete a post' do
+      @smiley_dog.reviews.create(comments: 'cute!', rating: 4)
+      visit '/posts'
+      expect(page).to have_content 'cute'
+      expect(page).to have_content '4'
+      click_link 'Delete Smiley dog'
+      expect(page).not_to have_content 'cute'
+      expect(page).not_to have_content '4'
     end
   end
 

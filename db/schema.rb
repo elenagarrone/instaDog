@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104154614) do
+ActiveRecord::Schema.define(version: 20150104163349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 20150104154614) do
     t.integer  "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "post_id"
   end
 
+  add_index "reviews", ["post_id"], name: "index_reviews_on_post_id", using: :btree
+
+  add_foreign_key "reviews", "posts"
 end

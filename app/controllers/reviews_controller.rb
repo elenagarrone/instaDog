@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post.reviews.create(review_params)
+    redirect_to posts_path
   end
 
   def review_params

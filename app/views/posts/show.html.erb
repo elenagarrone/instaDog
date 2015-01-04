@@ -1,2 +1,10 @@
 <p><%= @post.title  %></p>
 <p><%= @post.description %></p>
+
+<% if @post.reviews.any? %>
+  <ul>
+    <% @post.reviews.each do |review| %>
+    <li><%= review.comments %>, <%= review.rating %></li>
+    <% end %>
+  </ul>
+<% end %>
