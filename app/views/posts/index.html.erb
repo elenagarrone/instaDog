@@ -2,6 +2,7 @@
   <% @posts.each do |post| %>
     <h2><%= link_to "#{ post.title }", post_path(post) %></h2>
     <%= link_to "Edit #{ post.title }", edit_post_path(post) %>
+    <%= link_to "Delete #{ post.title }", post_path(post), method: :delete %>
   <% end %>
 <% else %>
   No posts yet
