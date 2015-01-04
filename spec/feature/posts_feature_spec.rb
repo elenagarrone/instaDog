@@ -21,4 +21,17 @@ feature 'posts' do
     end
   end
 
+  context 'creating a post' do
+    scenario 'prompts a user to fill out a form, the display the new post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Title', with: 'Smiley dog'
+      attach_file 'Image', 'public/images/smiling_dog.jpg'
+      click_button 'Create post'
+      expect(page).to have_content 'Smiley dog'
+      expect(page).to have_css("img[src*='public/images/smiling_dog.jpg']")
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 end
