@@ -11,7 +11,7 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Posts.create(title: 'Smiley dog')
+      Post.create(title: 'Smiley dog')
     end
 
     scenario 'display posts' do
