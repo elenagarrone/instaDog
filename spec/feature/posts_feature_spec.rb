@@ -32,6 +32,17 @@ feature 'posts' do
       # expect(page).to have_css("img[src*='public/:style/missing.png']")
       expect(current_path).to eq '/posts'
     end
+
+    context 'with an invalid post' do
+      it 'does not let you submit a title that is too short' do
+        visit '/posts'
+        click_link 'Add a post'
+        fill_in 'Title', with: 'aa'
+        click_button 'Create Post'
+        expect(page).not_to have_css 'h2', text: 'aa'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'viewing the posts' do
