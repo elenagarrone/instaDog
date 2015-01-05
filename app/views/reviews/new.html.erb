@@ -1,7 +1,5 @@
 <%= form_for [@post, @review] do |f| %>
   <%= f.label :comments %>
   <%= f.text_area :comments %>
-  <%= f.label :rating %>
-  <%= f.select :rating, (1..5) %>
   <%= f.submit 'Leave Comment' %>
 <% end %>

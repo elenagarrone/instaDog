@@ -19,14 +19,12 @@ context 'deleting posts' do
       expect(page).to have_content 'Post removed successfully'
     end
 
-    scenario "removes the comments and rating when clicking on the 'delete post' link" do
+    scenario "removes the comments  when clicking on the 'delete post' link" do
       create_comment
       visit '/posts'
       expect(page).to have_content 'so funny!'
-      expect(page).to have_content '5'
       click_link 'Delete Smiley dog'
       expect(page).not_to have_content 'so funny!'
-      expect(page).not_to have_content '5'
     end
   end
 
