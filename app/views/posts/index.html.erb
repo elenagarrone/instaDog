@@ -9,6 +9,8 @@
         <% end %>
       </ul>
     <% end %>
+    <%= link_to 'Like', post_likes_path(post), method: :post, class: 'like-link' %>
+    <p><%= pluralize(post.likes.count, 'Like') %><p>
 
     <% if current_user == post.user %>
       <%= link_to "Edit #{ post.title }", edit_post_path(post) %>
