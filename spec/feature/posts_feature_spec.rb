@@ -21,29 +21,76 @@ feature 'posts' do
     end
   end
 
-  context 'creating a post' do
-    scenario 'prompts a user to fill out a form, the display the new post' do
-      visit '/posts'
-      click_link 'Add a post'
-      fill_in 'Title', with: 'Smiley dog'
-      # attach_file 'Image', 'public/:style/missing.png'
-      click_on 'Create Post'
-      expect(page).to have_content 'Smiley dog'
-      # expect(page).to have_css("img[src*='public/:style/missing.png']")
-      expect(current_path).to eq '/posts'
+  context 'while signed in' do
+
+    before do
+      visit '/'
+      click_link 'Sign up'
+      fill_in 'Email', with: 'test@example.com'
+      fill_in 'Password', with: 'testtest'
+      fill_in 'Password confirmation', with: 'testtest'
+      click_button 'Sign up'
     end
 
-    context 'with an invalid post' do
-      it 'does not let you submit a title that is too short' do
+    context 'creating a post' do
+      scenario 'prompts a user to fill out a form, the display the new post' do
         visit '/posts'
         click_link 'Add a post'
-        fill_in 'Title', with: 'aa'
-        click_button 'Create Post'
-        expect(page).not_to have_css 'h2', text: 'aa'
-        expect(page).to have_content 'error'
+        fill_in 'Title', with: 'Smiley dog'
+        # attach_file 'Image', 'public/:style/missing.png'
+        click_on 'Create Post'
+        expect(page).to have_content 'Smiley dog'
+        # expect(page).to have_css("img[src*='public/:style/missing.png']")
+        expect(current_path).to eq '/posts'
+      end
+
+      context 'with an invalid post' do
+        it 'does not let you submit a title that is too short' do
+          visit '/posts'
+          click_link 'Add a post'
+          fill_in 'Title', with: 'aa'
+          click_button 'Create Post'
+          expect(page).not_to have_css 'h2', text: 'aa'
+          expect(page).to have_content 'error'
+        end
+      end
+    end
+
+    context 'editing posts' do
+      before { Post.create title: 'Smiley dog' }
+
+      scenario 'let a user edit a post' do
+        visit '/posts'
+        click_link 'Edit Smiley dog'
+        fill_in 'Title', with: 'Adorable dog smiling'
+        click_button 'Update Post'
+        expect(page).to have_content 'Adorable dog smiling'
+        expect(current_path).to eq '/posts'
+      end
+    end
+
+    context 'deleting posts' do
+      before { @smiley_dog = Post.create title: 'Smiley dog' }
+
+      scenario 'removes a posts when a user clicks a delete link' do
+        visit '/posts'
+        click_link 'Delete Smiley dog'
+        expect(page).not_to have_content 'Smiley dog'
+        expect(page).to have_content 'Post removed successfully'
+      end
+
+      scenario 'removes the comments and rating when a user delete a post' do
+        @smiley_dog.reviews.create(comments: 'cute!', rating: 4)
+        visit '/posts'
+        expect(page).to have_content 'cute'
+        expect(page).to have_content '4'
+        click_link 'Delete Smiley dog'
+        expect(page).not_to have_content 'cute'
+        expect(page).not_to have_content '4'
       end
     end
   end
+
 
   context 'viewing the posts' do
     let!(:smiley_dog) { Post.create(title: 'Smiley dog') }
@@ -55,39 +102,4 @@ feature 'posts' do
       expect(current_path).to eq "/posts/#{ smiley_dog.id }"
     end
   end
-
-  context 'editing posts' do
-    before { Post.create title: 'Smiley dog' }
-
-    scenario 'let a user edit a post' do
-      visit '/posts'
-      click_link 'Edit Smiley dog'
-      fill_in 'Title', with: 'Adorable dog smiling'
-      click_button 'Update Post'
-      expect(page).to have_content 'Adorable dog smiling'
-      expect(current_path).to eq '/posts'
-    end
-  end
-
-  context 'deleting posts' do
-    before { @smiley_dog = Post.create title: 'Smiley dog' }
-
-    scenario 'removes a posts when a user clicks a delete link' do
-      visit '/posts'
-      click_link 'Delete Smiley dog'
-      expect(page).not_to have_content 'Smiley dog'
-      expect(page).to have_content 'Post removed successfully'
-    end
-
-    scenario 'removes the comments and rating when a user delete a post' do
-      @smiley_dog.reviews.create(comments: 'cute!', rating: 4)
-      visit '/posts'
-      expect(page).to have_content 'cute'
-      expect(page).to have_content '4'
-      click_link 'Delete Smiley dog'
-      expect(page).not_to have_content 'cute'
-      expect(page).not_to have_content '4'
-    end
-  end
-
 end
