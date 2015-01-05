@@ -4,7 +4,7 @@ require_relative 'helpers/post_helper'
 feature 'commenting' do
 
   before do
-    sign_up
+    sign_up_first_user
     create_post
   end
 

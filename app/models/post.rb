@@ -5,5 +5,6 @@ class Post < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   validates :title, length: { minimum: 3 }
+  belongs_to :user
 
 end

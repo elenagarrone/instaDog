@@ -2,15 +2,18 @@
   <% @posts.each do |post| %>
     <h2><%= link_to "#{ post.title }", post_path(post) %></h2>
 
-      <% if post.reviews.any? %>
-        <ul>
-          <% post.reviews.each do |review| %>
-            <li><%= review.comments %>, <%= review.rating %></li>
-          <% end %>
-        </ul>
-      <% end %>
+    <% if post.reviews.any? %>
+      <ul>
+        <% post.reviews.each do |review| %>
+          <li><%= review.comments %>, <%= review.rating %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-    <%= link_to "Edit #{ post.title }", edit_post_path(post) %>
+    <% if current_user == post.user %>
+      <%= link_to "Edit #{ post.title }", edit_post_path(post) %>
+    <% end %>
+    
     <%= link_to "Delete #{ post.title }", post_path(post), method: :delete %>
     <%= link_to "Comment #{ post.title }", new_post_review_path(post) %>
   <% end %>

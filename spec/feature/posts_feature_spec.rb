@@ -25,7 +25,7 @@ feature 'posts' do
   context 'while signed in' do
 
     before do
-      sign_up
+      sign_up_first_user
     end
 
     context 'creating a post' do
