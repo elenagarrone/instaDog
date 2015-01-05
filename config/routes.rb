@@ -56,7 +56,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :posts do
-    resources :reviews
+    resources :reviews do
+      resources :likes
+    end
   end
 
 end
