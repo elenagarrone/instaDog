@@ -11,7 +11,6 @@ context 'editing posts' do
   context 'when logged in' do
     scenario 'let a user edit a post' do
       visit '/posts'
-      save_and_open_page
       click_link 'Edit Smiley dog'
       fill_in 'Title', with: 'Adorable dog smiling'
       click_button 'Update Post'
