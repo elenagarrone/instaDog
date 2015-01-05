@@ -52,19 +52,6 @@ feature 'posts' do
       end
     end
 
-    context 'editing posts' do
-      before { Post.create title: 'Smiley dog' }
-
-      scenario 'let a user edit a post' do
-        visit '/posts'
-        click_link 'Edit Smiley dog'
-        fill_in 'Title', with: 'Adorable dog smiling'
-        click_button 'Update Post'
-        expect(page).to have_content 'Adorable dog smiling'
-        expect(current_path).to eq '/posts'
-      end
-    end
-
     context 'deleting posts' do
       before { @smiley_dog = Post.create title: 'Smiley dog' }
 
@@ -98,4 +85,5 @@ feature 'posts' do
       expect(current_path).to eq "/posts/#{ smiley_dog.id }"
     end
   end
+
 end

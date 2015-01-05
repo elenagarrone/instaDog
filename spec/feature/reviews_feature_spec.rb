@@ -1,7 +1,12 @@
 require 'rails_helper'
+require_relative 'helpers/post_helper'
 
 feature 'commenting' do
-  before { Post.create title: 'Smiley dog' }
+
+  before do
+    sign_up
+    create_post
+  end
 
   scenario 'allows a user to leave a comment using a form' do
     visit '/posts'
