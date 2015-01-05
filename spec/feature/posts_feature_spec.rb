@@ -51,7 +51,7 @@ feature 'posts' do
         end
       end
     end
-    
+
   end
 
   context 'viewing the posts' do

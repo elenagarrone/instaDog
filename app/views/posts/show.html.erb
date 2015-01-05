@@ -5,9 +5,9 @@
   <ul>
     <% @post.reviews.each do |review| %>
       <li><%= review.comments %>, <%= review.rating %></li>
-      <!-- <% if current_user == review.user %>
-        <%= link_to "Delete comment" %>
-      <% end %> -->
+      <% if current_user == review.user %>
+        <%= link_to "Delete comment", posts_path(:id => review.id), method: :delete %>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
