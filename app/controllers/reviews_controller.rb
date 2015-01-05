@@ -7,8 +7,16 @@ class ReviewsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.reviews.create(review_params)
-    redirect_to posts_path
+    @review = @post.reviews.create(review_params)
+    @review.user = current_user
+    if @review.save
+      redirect_to posts_path
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
   end
 
   def review_params
