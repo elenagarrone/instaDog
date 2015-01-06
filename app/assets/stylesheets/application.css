@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+/*=========================
+        HEADER
+=========================*/
 nav div div.navbar-header {
   float: none;
 }
@@ -25,12 +29,22 @@ nav div div.navbar-header a.navbar-brand>img {
   height: 100%;
 }
 
-nav div div.navbar-header button {
+/*nav div div.navbar-header button {
   height: 35px;
+}*/
+
+nav div div.navbar-header a {
+  color: #428bca;
+  text-decoration: none;
 }
 
-nav div div.navbar-header button a.navbar-brand {
-  padding: 0% 0% 0% 0%;
+nav div div.navbar-header a:hover {
+  color: #428bca;
 }
 
-/*text-decoration: none;*/
+/*=========================
+      THUMBNAIL
+=========================*/
+div.row div.col-sm-6.col-md-4 div.thumbnail div.caption button.btn.btn-primary a.likes-link {
+  color: #ffffff;
+}

@@ -1,8 +1,18 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h2><%= link_to "#{ post.title }", post_path(post) %></h2>
-    <%= image_tag post.image.url(:thumb) %>
-    <%= post.description %>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag post.image.url(:thumb) %>
+          <div class="caption">
+            <h3><%= link_to "#{ post.title }", post_path(post) %></h3>
+            <p><%= post.description %></p>
+            <%= link_to "Like #{ post.title }", post_likes_path(post), class: 'likes-link btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <% if post.reviews.any? %>
       <ul>
@@ -11,7 +21,7 @@
         <% end %>
       </ul>
     <% end %>
-    <%= link_to "Like #{ post.title }", post_likes_path(post), class: 'likes-link' %>
+
     <span class="likes_count"><%= post.likes.count %></span> Likes
 
     <% if current_user == post.user %>
