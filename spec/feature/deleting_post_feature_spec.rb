@@ -14,7 +14,7 @@ context 'deleting posts' do
   context 'as the owner of the post' do
     scenario 'removes a posts when clicks on the delete link' do
       visit '/posts'
-      click_link 'Delete Smiley dog'
+      click_link 'Delete'
       expect(page).not_to have_content 'Smiley dog'
       expect(page).to have_content 'Post removed successfully'
     end
@@ -25,7 +25,7 @@ context 'deleting posts' do
       click_link 'Smiley dog'
       expect(page).to have_content 'so funny!'
       visit '/posts'
-      click_link 'Delete Smiley dog'
+      click_link 'Delete'
       expect(page).not_to have_content 'Smiley dog'
       expect(page).not_to have_content 'so funny!'
     end

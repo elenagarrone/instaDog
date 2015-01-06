@@ -16,7 +16,7 @@ context 'deleting comments' do
     visit '/posts'
     click_link 'Smiley dog'
     expect(page).to have_content 'so funny!'
-    expect(page).to have_link 'Delete comment'
+    expect(page).to have_link 'Delete'
   end
 
   scenario "is not possible when it's not your own message" do
@@ -25,7 +25,7 @@ context 'deleting comments' do
     visit '/posts'
     click_link 'Smiley dog'
     expect(page).to have_content 'so funny!'
-    expect(page).not_to have_link 'Delete comment'
+    expect(page).not_to have_link 'Delete'
   end
 
 end

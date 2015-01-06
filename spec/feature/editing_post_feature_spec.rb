@@ -11,7 +11,7 @@ context 'editing posts' do
   context 'when logged in' do
     scenario 'let a user edit a post' do
       visit '/posts'
-      click_link 'Edit Smiley dog'
+      click_link 'Edit'
       fill_in 'Title', with: 'Adorable dog smiling'
       click_button 'Update Post'
       expect(page).to have_content 'Adorable dog smiling'
@@ -24,7 +24,7 @@ context 'editing posts' do
       sign_out
       sign_up_second_user
       visit '/posts'
-      expect(page).not_to have_link 'Edit Smiley dog'
+      expect(page).not_to have_link 'Edit'
     end
   end
 

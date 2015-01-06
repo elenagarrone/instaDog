@@ -29,22 +29,20 @@ nav div div.navbar-header a.navbar-brand>img {
   height: 100%;
 }
 
-/*nav div div.navbar-header button {
-  height: 35px;
-}*/
-
-nav div div.navbar-header a {
+nav div div.navbar-header a.btn.btn-default.navbar-btn {
   color: #428bca;
   text-decoration: none;
 }
 
-nav div div.navbar-header a:hover {
+nav div div.navbar-header a.btn.btn-default.navbar-btn:hover {
   color: #428bca;
 }
 
 /*=========================
       THUMBNAIL
 =========================*/
-div.row div.col-sm-6.col-md-4 div.thumbnail div.caption button.btn.btn-primary a.likes-link {
-  color: #ffffff;
+
+div.row div.col-sm-6.col-md-4 div.thumbnail div.caption h3 {
+  padding-right: 15px;
+  display: inline-block;
 }

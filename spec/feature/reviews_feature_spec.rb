@@ -10,7 +10,7 @@ feature 'commenting' do
 
   scenario 'allows a user to leave a comment using a form' do
     visit '/posts'
-    click_link 'Comment Smiley dog'
+    click_link 'Comment'
     fill_in 'Comment', with: 'so funny!'
     click_button 'Leave Comment'
     click_on 'Smiley dog'
