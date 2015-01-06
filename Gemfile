@@ -52,3 +52,5 @@ end
 gem 'devise'
 gem 'paperclip'
 gem 'omniauth-facebook'
+gem 'poltergeist'
+gem 'database_cleaner'

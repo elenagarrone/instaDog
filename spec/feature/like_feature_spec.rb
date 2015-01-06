@@ -10,10 +10,12 @@ feature 'like reviews' do
     create_post
   end
 
-  scenario 'a user can like a review, which updates the review like count' do
+  scenario 'a user can like a review, which updates the review like count', js:true do
     visit '/posts'
     click_link 'Like'
     expect(page).to have_content('1 Like')
+    click_link 'Like'
+    expect(page).to have_content('2 Likes')
   end
 
 end
