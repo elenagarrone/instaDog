@@ -11,8 +11,10 @@ feature 'posts' do
   end
 
   context 'posts have been added' do
+
     before do
-      Post.create(title: 'Smiley dog')
+      sign_up_first_user
+      create_post
     end
 
     scenario 'display posts' do
@@ -33,10 +35,10 @@ feature 'posts' do
         visit '/posts'
         click_link 'Add a post'
         fill_in 'Title', with: 'Smiley dog'
-        # attach_file 'Image', 'public/:style/missing.png'
+        attach_file 'Image', 'public/images/missing.png'
         click_on 'Create Post'
         expect(page).to have_content 'Smiley dog'
-        # expect(page).to have_css("img[src*='public/:style/missing.png']")
+        # expect(page).to have_css("img[src*='public/images/missing.png']")
         expect(current_path).to eq '/posts'
       end
 
