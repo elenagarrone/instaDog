@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+nav div div.navbar-header {
+  float: none;
+}
+
+nav div div.navbar-header a.navbar-brand {
+  padding: 0% 1% 0% 0%;
+}
+
+nav div div.navbar-header a.navbar-brand>img {
+  height: 100%;
+}
+
+nav div div.navbar-header button {
+  height: 35px;
+}
+
+nav div div.navbar-header button a.navbar-brand {
+  padding: 0% 0% 0% 0%;
+}
+
+/*text-decoration: none;*/

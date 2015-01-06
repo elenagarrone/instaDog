@@ -55,3 +55,5 @@ gem 'omniauth-facebook'
 gem 'poltergeist'
 gem 'database_cleaner'
 gem 'launchy'
+gem 'aws-sdk'
+gem "twitter-bootstrap-rails"
