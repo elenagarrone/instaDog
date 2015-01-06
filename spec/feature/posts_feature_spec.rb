@@ -36,8 +36,10 @@ feature 'posts' do
         click_link 'Add a post'
         fill_in 'Title', with: 'Smiley dog'
         # attach_file 'Image', 'public/images/missing.png'
+        fill_in 'Description', with: 'My little puppy'
         click_on 'Create Post'
         expect(page).to have_content 'Smiley dog'
+        expect(page).to have_content 'My little puppy'
         # expect(page).to have_css("img[src*='public/images/missing.png']")
         expect(current_path).to eq '/posts'
       end

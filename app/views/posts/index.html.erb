@@ -2,6 +2,7 @@
   <% @posts.each do |post| %>
     <h2><%= link_to "#{ post.title }", post_path(post) %></h2>
     <%= image_tag post.image.url(:thumb) %>
+    <%= post.description %>
 
     <% if post.reviews.any? %>
       <ul>
