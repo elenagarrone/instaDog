@@ -13,7 +13,6 @@ feature 'commenting' do
     click_link 'Comment'
     fill_in 'Comment', with: 'so funny!'
     click_button 'Leave Comment'
-    click_on 'Smiley dog'
     expect(page).to have_content 'so funny!'
   end
 

@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = @post.reviews.create(review_params)
     @review.user = current_user
     if @review.save
-      redirect_to posts_path
+      redirect_to "/posts/#{params[:post_id]}"
     else
       render 'new'
     end
