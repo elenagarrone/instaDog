@@ -5,7 +5,7 @@ instaDog
 ========
 As weekend challange for week 8 we had to build an Instagram clone using Rails.
 
-<img src='public/images/screenshot2'>
+<img src='public/images/screenshot2.png'>
 
 Specification:
 -------------
