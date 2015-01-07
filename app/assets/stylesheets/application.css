@@ -17,32 +17,42 @@
 /*=========================
         HEADER
 =========================*/
-nav div div.navbar-header {
-  float: none;
-}
+nav div div.navbar-header { float: none; }
 
-nav div div.navbar-header a.navbar-brand {
-  padding: 0% 1% 0% 0%;
-}
+nav div div.navbar-header a.navbar-brand { padding: 0% 1% 0% 0%; }
 
-nav div div.navbar-header a.navbar-brand>img {
-  height: 100%;
-}
+nav div div.navbar-header a.navbar-brand>img { height: 100%; }
 
 nav div div.navbar-header a.btn.btn-default.navbar-btn {
   color: #428bca;
   text-decoration: none;
 }
 
-nav div div.navbar-header a.btn.btn-default.navbar-btn:hover {
-  color: #428bca;
-}
+nav div div.navbar-header a.btn.btn-default.navbar-btn:hover { color: #428bca; }
 
 /*=========================
       THUMBNAIL
 =========================*/
+div.row div.col-sm-6.col-md-4 {
+  width: 100%;
+  text-align: center;
+}
+
+div.row div.col-sm-6.col-md-4 div.thumbnail {
+  display: inline-block;
+  height: 360px;
+  vertical-align: top;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  width: 250px;
+}
+
+div.row div.col-sm-6.col-md-4 div.thumbnail div.caption { text-align: left; }
 
 div.row div.col-sm-6.col-md-4 div.thumbnail div.caption h3 {
+  margin-top: 3%;
   padding-right: 15px;
   display: inline-block;
 }
+
+div.row div.col-sm-6.col-md-4 div.thumbnail div.caption a.btn.btn-primary { margin-top: 4px; }
