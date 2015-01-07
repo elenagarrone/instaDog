@@ -58,3 +58,4 @@ gem 'database_cleaner'
 gem 'launchy'
 gem 'aws-sdk'
 gem "twitter-bootstrap-rails"
+gem 'rails_12factor'
