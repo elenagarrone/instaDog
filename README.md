@@ -37,8 +37,8 @@ To do:
 - [ ] amazon web services to store the images
 - [ ] deploy to Heroku
 
-How to test it:
---------------
+How to test:
+------------
 Clone the repo:
 ```shell
 $ git clone https://github.com/elenagarrone/instaDog.git
@@ -46,6 +46,10 @@ $ git clone https://github.com/elenagarrone/instaDog.git
 Change into the directory:
 ```shell
 $ cd instaDog
+```
+Install the gems:
+```shell
+$ bundle install
 ```
 Run:
 ```shell
